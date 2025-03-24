@@ -1,0 +1,5 @@
+/env.properties
+
+/.idea
+/.gradle
+.DS_Store
