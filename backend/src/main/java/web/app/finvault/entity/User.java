@@ -44,6 +44,8 @@ public class User implements UserDetails {
     private Date createdAt;
     @UpdateTimestamp
     private Date updatedAt;
+
+    private String tag;
     private List<String> roles;
     @OneToOne(mappedBy = "owner")
     @JsonIgnore
