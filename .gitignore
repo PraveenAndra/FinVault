@@ -1,5 +1,7 @@
 /env.properties
 
 /.idea
-/.gradle
+#/backend/.gradle/
+#/backend/build/
+/backend/.idea
 .DS_Store

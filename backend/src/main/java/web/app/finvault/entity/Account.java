@@ -7,6 +7,7 @@ import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -41,15 +42,15 @@ public class Account {
     private String label;
 
     // Symbol associated with the account (e.g., currency symbol)
-    private String symbol;
+    private char symbol;
 
     // Timestamp of the last update to the account, automatically updated by Hibernate
     @UpdateTimestamp
-    private long updatedAt;
+    private LocalDateTime updatedAt;
 
     // Timestamp of the account creation, automatically updated by Hibernate
     @CreationTimestamp
-    private long createdAt;
+    private LocalDateTime createdAt;
 
     // Owner of the account, mapped to the User entity using a foreign key
     @ManyToOne
