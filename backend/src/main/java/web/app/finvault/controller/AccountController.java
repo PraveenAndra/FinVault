@@ -7,7 +7,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 import web.app.finvault.dto.AccountDto;
+import web.app.finvault.dto.ConvertDto;
+import web.app.finvault.dto.TransferDto;
 import web.app.finvault.entity.Account;
+import web.app.finvault.entity.Transaction;
 import web.app.finvault.entity.User;
 import web.app.finvault.service.AccountService;
 
@@ -35,6 +38,18 @@ public class AccountController {
     public ResponseEntity<List<Account>> getUserAccounts(Authentication authentication) {
         User user = (User) authentication.getPrincipal();
         return ResponseEntity.ok(accountService.getUserAccounts(user.getUid()));
+    }
+
+    @PostMapping("/transfer")
+    public ResponseEntity<Transaction> transferFunds(@RequestBody TransferDto transferDto, Authentication authentication) throws Exception {
+        User user = (User) authentication.getPrincipal();
+        return ResponseEntity.ok(accountService.transferFunds(transferDto, user));
+    }
+
+    @PostMapping("/convert")
+    public ResponseEntity<Transaction> convertCurrency(@RequestBody ConvertDto convertDto, Authentication authentication) throws Exception {
+        var user = (User) authentication.getPrincipal();
+        return ResponseEntity.ok(accountService.convertCurrency(convertDto, user));
     }
 
 }
